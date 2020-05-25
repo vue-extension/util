@@ -1,19 +1,12 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "outDir": "out",
-        "lib": [
-            "es7"
-        ],
-        "sourceMap": true,
-        "rootDir": "src",
-        "allowJs": true,
-    },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es7", "ScriptHost", "DOM"],
+    "sourceMap": true,
+    "rootDir": "src",
+    "allowJs": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
