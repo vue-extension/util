@@ -1,4 +1,5 @@
 import { isPlainObject } from "lodash";
+import { VNode } from "vue";
 
 function getType(fn) {
   const match = fn && fn.toString().match(/^\s*function (\w+)/);
@@ -211,7 +212,7 @@ export function isEmptyElement(ele) {
   return !(ele.tag || ele.text.trim() !== "");
 }
 
-export function filterEmpty(children = []) {
+export function filterEmpty(children: VNode[] = []): Array<VNode> {
   return children.filter((c) => c.tag || (c.text && c.text.trim() !== ""));
 }
 const initDefaultProps = (propTypes, defaultProps) => {

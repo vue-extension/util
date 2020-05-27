@@ -1,5 +1,5 @@
 import { filterEmpty, parseStyleText } from "./propsutil";
-export function cloneVNode(vnode, deep) {
+export function cloneVNode(vnode, deep: boolean) {
   const componentOptions = vnode.componentOptions;
   const data = vnode.data;
 
@@ -51,7 +51,7 @@ export function cloneVNodes(vnodes, deep) {
   return res;
 }
 
-export function cloneElement(n, nodeProps, deep) {
+export function cloneElement(n, nodeProps, deep: boolean) {
   let ele = n;
   if (Array.isArray(n)) {
     ele = filterEmpty(n)[0];
