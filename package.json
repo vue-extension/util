@@ -1,7 +1,8 @@
 {
   "name": "vext-util",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
+  "typings": "types/index.d.ts",
   "keywords": [
     "front-end",
     "vue",
