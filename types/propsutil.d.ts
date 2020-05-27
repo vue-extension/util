@@ -1,3 +1,4 @@
+import { VNode } from "vue";
 declare const camelize: (str: any) => any;
 declare const parseStyleText: (cssText?: string, camel?: boolean) => {};
 declare const hasProp: (instance: any, prop: any) => boolean;
@@ -17,7 +18,7 @@ export declare function getClass(ele: any): {};
 export declare function getStyle(ele: any, camel: any): any;
 export declare function getComponentName(opts: any): any;
 export declare function isEmptyElement(ele: any): boolean;
-export declare function filterEmpty(children?: any[]): any[];
+export declare function filterEmpty(children?: VNode[]): Array<VNode>;
 declare const initDefaultProps: (propTypes: any, defaultProps: any) => any;
 export declare function mergeProps(): {};
 declare function isValidElement(element: any): any;
