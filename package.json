@@ -1,7 +1,9 @@
 {
   "name": "vext-util",
-  "version": "1.0.17",
+  "version": "1.0.19",
   "description": "",
+  "module": "./es/index.js",
+  "main": "lib/index.js",
   "typings": "types/index.d.ts",
   "keywords": [
     "front-end",
