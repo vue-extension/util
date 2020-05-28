@@ -1,6 +1,6 @@
 {
   "name": "vext-util",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "module": "./es/index.js",
   "main": "lib/index.js",
@@ -13,7 +13,8 @@
   "files": [
     "lib",
     "es",
-    "types"
+    "types",
+    "src"
   ],
   "scripts": {
     "build": "vext-cli-run patch-up & vext-cli-run build"
