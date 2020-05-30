@@ -1,10 +1,9 @@
 import { filterEmpty, parseStyleText } from "./propsutil";
-import classNames from 'classnames';
+import classNames from "classnames";
 import { VNode } from "vue";
 export function cloneVNode(vnode: any, deep: boolean): VNode {
   const componentOptions = vnode.componentOptions;
   const data = vnode.data;
-
   let listeners = {};
   if (componentOptions && componentOptions.listeners) {
     listeners = { ...componentOptions.listeners };
@@ -14,6 +13,7 @@ export function cloneVNode(vnode: any, deep: boolean): VNode {
   if (data && data.on) {
     on = { ...data.on };
   }
+
   const cloned = new vnode.constructor(
     vnode.tag,
     data ? { ...data, on } : data,
@@ -22,8 +22,9 @@ export function cloneVNode(vnode: any, deep: boolean): VNode {
     vnode.elm,
     vnode.context,
     componentOptions ? { ...componentOptions, listeners } : componentOptions,
-    vnode.asyncFactory,
+    vnode.asyncFactory
   );
+
   cloned.ns = vnode.ns;
   cloned.isStatic = vnode.isStatic;
   cloned.key = vnode.key;
@@ -43,7 +44,7 @@ export function cloneVNode(vnode: any, deep: boolean): VNode {
   return cloned;
 }
 
-export function cloneVNodes(vnodes, deep) {
+export function cloneVNodes(vnodes: any[], deep: boolean = false) {
   const len = vnodes.length;
   const res = new Array(len);
   for (let i = 0; i < len; i++) {
@@ -51,7 +52,11 @@ export function cloneVNodes(vnodes, deep) {
   }
   return res;
 }
-export function cloneElement(n: any, nodeProps: any = {}, deep: boolean = false) {
+export function cloneElement(
+  n: any,
+  nodeProps: any = {},
+  deep: boolean = false
+) {
   let ele = n;
   if (Array.isArray(n)) {
     ele = filterEmpty(n)[0];
@@ -65,10 +70,17 @@ export function cloneElement(n: any, nodeProps: any = {}, deep: boolean = false)
   //   !(node.fnOptions && node.fnOptions.functional),
   //   `can not use cloneElement for functional component (${node.fnOptions && node.fnOptions.name})`,
   // );
-  const { props = {}, key, on = {}, nativeOn = {}, children, directives = [] } = nodeProps;
+  const {
+    props = {},
+    key,
+    on = {},
+    nativeOn = {},
+    children,
+    directives = [],
+  } = nodeProps;
   const data = node.data || {};
-  let cls = {};
-  let style = {};
+  let cls: any = {};
+  let style: any = {};
   const {
     attrs = {},
     ref,
@@ -78,32 +90,32 @@ export function cloneElement(n: any, nodeProps: any = {}, deep: boolean = false)
     scopedSlots = {},
   } = nodeProps;
 
-  if (typeof data.style === 'string') {
+  if (typeof data.style === "string") {
     style = parseStyleText(data.style);
   } else {
     style = { ...data.style, ...style };
   }
-  if (typeof tempStyle === 'string') {
+  if (typeof tempStyle === "string") {
     style = { ...style, ...parseStyleText(style.toString()) };
   } else {
     style = { ...style, ...tempStyle };
   }
 
-  if (typeof data.class === 'string' && data.class.trim() !== '') {
-    data.class.split(' ').forEach(c => {
+  if (typeof data.class === "string" && data.class.trim() !== "") {
+    data.class.split(" ").forEach((c) => {
       cls[c.trim()] = true;
     });
   } else if (Array.isArray(data.class)) {
     classNames(data.class)
-      .split(' ')
-      .forEach(c => {
+      .split(" ")
+      .forEach((c) => {
         cls[c.trim()] = true;
       });
   } else {
     cls = { ...data.class, ...cls };
   }
-  if (typeof tempCls === 'string' && tempCls.trim() !== '') {
-    tempCls.split(' ').forEach(c => {
+  if (typeof tempCls === "string" && tempCls.trim() !== "") {
+    tempCls.split(" ").forEach((c) => {
       cls[c.trim()] = true;
     });
   } else {
@@ -121,8 +133,14 @@ export function cloneElement(n: any, nodeProps: any = {}, deep: boolean = false)
   if (node.componentOptions) {
     node.componentOptions.propsData = node.componentOptions.propsData || {};
     node.componentOptions.listeners = node.componentOptions.listeners || {};
-    node.componentOptions.propsData = { ...node.componentOptions.propsData, ...props };
-    node.componentOptions.listeners = { ...node.componentOptions.listeners, ...on };
+    node.componentOptions.propsData = {
+      ...node.componentOptions.propsData,
+      ...props,
+    };
+    node.componentOptions.listeners = {
+      ...node.componentOptions.listeners,
+      ...on,
+    };
     if (children) {
       node.componentOptions.children = children;
     }
@@ -138,7 +156,7 @@ export function cloneElement(n: any, nodeProps: any = {}, deep: boolean = false)
     node.key = key;
     node.data.key = key;
   }
-  if (typeof ref === 'string') {
+  if (typeof ref === "string") {
     node.data.ref = ref;
   }
   return node;

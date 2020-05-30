@@ -1,10 +1,9 @@
 {
   "name": "vext-util",
-  "version": "1.0.20",
+  "version": "1.0.26",
   "description": "",
-  "module": "./es/index.js",
-  "main": "lib/index.js",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "keywords": [
     "front-end",
     "vue",
@@ -17,7 +16,7 @@
     "src"
   ],
   "scripts": {
-    "build": "vext-cli-run patch-up & vext-cli-run build"
+    "build": "vext-cli-run patch-up & vext-cli-run clean & tsc"
   },
   "repository": {
     "type": "git",
@@ -33,7 +32,7 @@
     "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "vue": ">=2.6.11"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
