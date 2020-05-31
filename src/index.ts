@@ -22,3 +22,5 @@ export {
 } from "./propsutil";
 
 export { cloneVNode, cloneVNodes, cloneElement } from "./vnode";
+import ChildrenUtils from "./ChildrenUtils";
+export { ChildrenUtils };

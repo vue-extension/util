@@ -1,6 +1,6 @@
 {
   "name": "vext-util",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
